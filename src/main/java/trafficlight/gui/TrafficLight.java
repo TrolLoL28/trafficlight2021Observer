@@ -1,9 +1,13 @@
 package trafficlight.gui;
 
 
+//import sun.jvm.hotspot.utilities.Observer;
+import trafficlight.inter.Observer;
+import trafficlight.states.State;
+
 import java.awt.*;
 
-public class TrafficLight extends Light {
+public class TrafficLight extends Light implements Observer {
 
     TrafficLight(Color color) {
         super(color);
@@ -16,6 +20,11 @@ public class TrafficLight extends Light {
 
     public boolean isOn() {
         return isOn;
+    }
+
+    @Override
+    public void update(State state) {
+        turnOn(!isOn());
     }
 
     //TODO implement a part of the pattern here
